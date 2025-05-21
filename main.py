@@ -57,7 +57,7 @@ def DecisionTreeClassifier():
         df = [dados[col] for col in colunas_necessarias]
     except KeyError as e:
         return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
-    df = pd.DataFrame([df])
+    df = pd.DataFrame([dados])
     df_dummies = pd.get_dummies(df)
     colunas_faltantes = [col for col in colunas_decision_tree_classifier if col not in df_dummies]
     df_novas_colunas = pd.DataFrame(0, index=df_dummies.index, columns=colunas_faltantes)
@@ -83,7 +83,7 @@ def RandomForestClassifier():
         df = [dados[col] for col in colunas_necessarias]
     except KeyError as e:
         return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
-    df = pd.DataFrame([df])
+    df = pd.DataFrame([dados])
     df_dummies = pd.get_dummies(df)
     colunas_faltantes = [col for col in colunas_random_forest_classifier if col not in df_dummies]
     df_novas_colunas = pd.DataFrame(0, index=df_dummies.index, columns=colunas_faltantes)
@@ -109,7 +109,7 @@ def XGBClassifier():
         df = [dados[col] for col in colunas_necessarias]
     except KeyError as e:
         return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
-    df = pd.DataFrame([df])
+    df = pd.DataFrame([dados])
     df_dummies = pd.get_dummies(df)
     colunas_faltantes = [col for col in colunas_random_forest_classifier if col not in df_dummies]
     df_novas_colunas = pd.DataFrame(0, index=df_dummies.index, columns=colunas_faltantes)
