@@ -33,10 +33,19 @@ def home():
 @basic_auth.required
 def CategoricalNBModel():
     dados = request.get_json()
-    dados_input = [dados[col] for col in colunas_categoricalNB_model]
+    try:
+        dados_input = [dados[col] for col in colunas_categoricalNB_model]
+    except KeyError as e:
+        return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
     dados_codificados = encoder_categoricalNB_model.transform([dados_input])
-    priorizacao = categoricalNB_model.predict(dados_codificados)
-    return jsonify(priorizacao = priorizacao[0])
+    predicao = categoricalNB_model.predict(dados_codificados)
+    resultado_json = jsonify({
+        "input": dados,
+        "output": {
+            "priorizacao": predicao[0]
+        }
+    })
+    return resultado_json
 
 @app.route('/DecisionTreeClassifier/', methods=['POST'])
 @basic_auth.required
@@ -51,7 +60,14 @@ def DecisionTreeClassifier():
     priorizacao = decision_tree_classifier_model.predict(df_dummies)
     valor = bool(priorizacao[0])
     resultado = 'Normal' if valor else 'Alto'
-    return jsonify(priorizacao=resultado)
+    resultado_json = jsonify({
+        "input": dados,
+        "output": {
+            "priorizacao": resultado
+        }
+    })
+    return resultado_json
+
 
 @app.route('/RandomForestClassifier/', methods=['POST'])
 @basic_auth.required
@@ -66,7 +82,13 @@ def RandomForestClassifier():
     priorizacao = random_forest_classifier_model.predict(df_dummies)
     valor = bool(priorizacao[0])
     resultado = 'Normal' if valor else 'Alto'
-    return jsonify(priorizacao=resultado)
+    resultado_json = jsonify({
+        "input": dados,
+        "output": {
+            "priorizacao": resultado
+        }
+    })
+    return resultado_json
 
 @app.route('/XGBClassifier/', methods=['POST'])
 @basic_auth.required
