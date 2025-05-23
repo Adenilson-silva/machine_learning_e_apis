@@ -1,5 +1,8 @@
-## Projeto Básico de MLOps (Machine Learning e APIs) 
+# Projeto Básico de MLOps (Machine Learning e APIs) 
 ## API de Priorização com Modelos de Machine Learning 
+<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1WdUIXOim7YvCHhwN4QUqaXVE-d2GUw-u" width="500">
+</div>
 
 ## Sobre este Projeto 
 Este projeto é uma API desenvolvida em _Flask_ que expõe quatro modelos de _Machine Learning_ para classificação de priorização com base em atributos fornecidos via requisição HTTP POST.
