@@ -115,7 +115,7 @@ def XGBClassifier():
     df_novas_colunas = pd.DataFrame(0, index=df_dummies.index, columns=colunas_faltantes)
     df_dummies = pd.concat([df_dummies, df_novas_colunas], axis=1)
     df_dummies = df_dummies[colunas_random_forest_classifier]
-    priorizacao = random_forest_classifier_model.predict(df_dummies)
+    priorizacao = xgb_classifier_model.predict(df_dummies)
     valor = bool(priorizacao[0])
     resultado = 'Normal' if valor else 'Alto'
     resultado_json = jsonify({
