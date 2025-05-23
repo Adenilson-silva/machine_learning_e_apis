@@ -15,7 +15,7 @@ colunas_decision_tree_classifier = pickle.load(open('modelos\modelo_2_DecisionTr
 random_forest_classifier_model = pickle.load(open('modelos\modelo_3_RandomForestClassifier\RandomForestClassifier.pickle','rb'))
 colunas_random_forest_classifier = pickle.load(open('modelos\modelo_3_RandomForestClassifier\colunas.pickle', 'rb'))
 
-XGB_classifier_model = pickle.load(open('modelos\modelo_4_XGBClassifier\XGBClassifier.pickle','rb'))
+xgb_classifier_model = pickle.load(open('modelos\modelo_4_XGBClassifier\XGBClassifier.pickle','rb'))
 colunas_XGB_classifier = pickle.load(open('modelos\modelo_4_XGBClassifier\colunas.pickle', 'rb'))
 
 
