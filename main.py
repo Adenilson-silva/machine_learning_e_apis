@@ -4,7 +4,7 @@ from flask_basicauth import BasicAuth
 import pandas as pd
 import pickle
 
-colunas_necessarias = ['finalidade','atividade','modalidade','produto', 'categoria_empresa']
+colunas_obrigatorias = ['finalidade','atividade','modalidade','produto', 'categoria_empresa']
 
 categoricalNB_model = pickle.load(open('modelos\modelo_1_CategoricalNB\CategoricalNB_model.pickle','rb'))
 encoder_categoricalNB_model = pickle.load(open('modelos\modelo_1_CategoricalNB\encoder.pickle', 'rb'))
@@ -35,7 +35,7 @@ def home():
 def CategoricalNBModel():
     dados = request.get_json()
     try:
-        dados_input = [dados[col] for col in colunas_necessarias]
+        dados_input = [dados[col] for col in colunas_obrigatorias]
     except KeyError as e:
         return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
     dados_codificados = encoder_categoricalNB_model.transform([dados_input])
@@ -54,7 +54,7 @@ def CategoricalNBModel():
 def DecisionTreeClassifier():
     dados = request.get_json()
     try:
-        df = [dados[col] for col in colunas_necessarias]
+        df = [dados[col] for col in colunas_obrigatorias]
     except KeyError as e:
         return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
     df = pd.DataFrame([dados])
@@ -80,7 +80,7 @@ def DecisionTreeClassifier():
 def RandomForestClassifier():
     dados = request.get_json()
     try:
-        df = [dados[col] for col in colunas_necessarias]
+        df = [dados[col] for col in colunas_obrigatorias]
     except KeyError as e:
         return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
     df = pd.DataFrame([dados])
@@ -106,7 +106,7 @@ def RandomForestClassifier():
 def XGBClassifier():
     dados = request.get_json()
     try:
-        df = [dados[col] for col in colunas_necessarias]
+        df = [dados[col] for col in colunas_obrigatorias]
     except KeyError as e:
         return jsonify({"erro": f"Campo ausente: {str(e)}"}), 400
     df = pd.DataFrame([dados])
