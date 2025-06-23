@@ -7,7 +7,7 @@
 ## Sobre este Projeto 
 Este projeto é uma API desenvolvida em _Flask_ que expõe quatro modelos de _Machine Learning_ para classificação de priorização com base em atributos fornecidos via requisição HTTP POST.
 
-Os _Machine Learning_ aqui empregados foram desenvolvidos em outro projeto já disponibilizado <a href="https://github.com/Adenilson-silva/sicor" target="_blank">aqui</a>.
+Os modelo de _Machine Learning_ aqui empregados foram desenvolvidos em outro projeto já disponibilizado <a href="https://github.com/Adenilson-silva/sicor" target="_blank">aqui</a>.
 
 ## Modelos Disponíveis
 A API permite acesso a quatro modelos:
